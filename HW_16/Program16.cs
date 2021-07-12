@@ -14,9 +14,10 @@ namespace HW_16
             public string weight = "3 kg";
             public string character = "introvert";
 
-            string a = "test";
-            string b = "test1";
-            static string Move(string a, string b)
+            public string a = "Move";
+            public string b = " left";
+           
+            public string Move()
             {
                 string results = a + b;
                 return results;
@@ -31,7 +32,8 @@ namespace HW_16
                 Console.WriteLine(test.age);
                 Console.WriteLine(test.weight);
                 Console.WriteLine(test.character);
-                Console.WriteLine(test.);
+                Console.WriteLine(test.Move());
+
             }
         }
     }

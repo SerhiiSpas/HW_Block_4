@@ -8,15 +8,18 @@ namespace HW_16
         class Dog
         {
 
+
             public string name = "Snejok";
             public int age = 1;
             public string weight = "3 kg";
             public string character = "introvert";
 
-            public void Test()
+            string a = "test";
+            string b = "test1";
+            static string Move(string a, string b)
             {
-              
-                return Test;
+                string results = a + b;
+                return results;
             }
         }
         class MainTest
@@ -28,6 +31,7 @@ namespace HW_16
                 Console.WriteLine(test.age);
                 Console.WriteLine(test.weight);
                 Console.WriteLine(test.character);
+                Console.WriteLine(test.);
             }
         }
     }

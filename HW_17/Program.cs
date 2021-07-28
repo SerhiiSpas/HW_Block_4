@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Дневник
 {
@@ -29,7 +30,7 @@ namespace Дневник
             List<double> scoreL = new List<double>();
             List<double> scorePh = new List<double>();
             List<double> scoreT = new List<double>();
-
+            List<double> test = scoreM.Concat(scoreL).Concat(scorePh).Concat(scoreT).ToList();
             while (true)
             {
                 Console.WriteLine("Выберите команду: " + "\n" +
@@ -37,7 +38,17 @@ namespace Дневник
                 "\n" + "3 - добавить оценку по Физика;" + "\n" + "4 - добавить оценку по Физ-ра;" + "\n"
                  + "11- Программа определяет максимальную оценку по Математике;" + "\n"
                  + "12- Программа определяет минимальную оценку по Математике;" + "\n"
-                 + "13- Программа определяет среднюю оценку по Математике" + "\n");
+                 + "13- Программа определяет среднюю оценку по Математике" + "\n"
+                 + "21- Программа определяет максимальную оценку по Литературе;" + "\n"
+                 + "22- Программа определяет минимальную оценку по Литературе;" + "\n"
+                 + "23- Программа определяет среднюю оценку по Литературе" + "\n"
+                 + "31- Программа определяет максимальную оценку по Физике;" + "\n"
+                 + "32- Программа определяет минимальную оценку по Физике;" + "\n"
+                 + "33- Программа определяет среднюю оценку по Физике" + "\n"
+                 + "41- Программа определяет максимальную оценку по Физ-ре;" + "\n"
+                 + "42- Программа определяет минимальную оценку по Физ-ре;" + "\n"
+                 + "43- Программа определяет среднюю оценку по Физ-ре;" + "\n"
+                 + "V - выход");
                 string selection = Console.ReadLine();
                 switch (selection)
                 {
@@ -180,7 +191,207 @@ namespace Дневник
 
                         break;
 
-                    case "=":
+                    case "21":
+                        do
+                        {
+                            if (scoreL.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scoreL.Sort();
+
+                                Console.WriteLine($"У {name} максимальной оценкой является {scoreL[scoreL.Count - 1]}" + "\n");
+
+                            }
+                        } while (check);
+
+
+                        break;
+                    case "22":
+                        do
+                        {
+                            if (scoreL.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scoreL.Sort();
+
+                                Console.WriteLine($"У {name} минимальной оценкой является {scoreL[0]}" + "\n");
+
+                            }
+                        } while (check);
+
+                        break;
+                    case "23":
+                        do
+                        {
+                            if (scoreL.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                double sumTmp = 0.0;
+                                foreach (double scoreElement in scoreL)
+                                {
+                                    sumTmp += scoreElement;
+                                }
+
+                                scoreL.Sort();
+
+                                Console.WriteLine($"У {name} средней оценкой является {sumTmp / scoreL.Count}" + "\n");
+
+                            }
+                        } while (check);
+
+
+                        break;
+                    case "31":
+                        do
+                        {
+                            if (scorePh.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scorePh.Sort();
+
+                                Console.WriteLine($"У {name} максимальной оценкой является {scorePh[scorePh.Count - 1]}" + "\n");
+
+                            }
+                        } while (check);
+
+
+                        break;
+                    case "32":
+                        do
+                        {
+                            if (scorePh.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scorePh.Sort();
+
+                                Console.WriteLine($"У {name} минимальной оценкой является {scorePh[0]}" + "\n");
+
+                            }
+                        } while (check);
+
+                        break;
+                    case "33":
+                        do
+                        {
+                            if (scorePh.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                double sumTmp = 0.0;
+                                foreach (double scoreElement in scorePh)
+                                {
+                                    sumTmp += scoreElement;
+                                }
+
+                                scorePh.Sort();
+
+                                Console.WriteLine($"У {name} средней оценкой является {sumTmp / scorePh.Count}" + "\n");
+
+                            }
+                        } while (check);
+
+
+                        break;
+                    case "41":
+                        do
+                        {
+                            if (scoreT.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scoreT.Sort();
+
+                                Console.WriteLine($"У {name} максимальной оценкой является {scoreT[scoreT.Count - 1]}" + "\n");
+
+                            }
+                        } while (check);
+
+
+                        break;
+                    case "42":
+                        do
+                        {
+                            if (scoreT.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                scoreT.Sort();
+
+                                Console.WriteLine($"У {name} минимальной оценкой является {scoreT[0]}" + "\n");
+
+                            }
+                        } while (check);
+
+                        break;
+                    case "43":
+                        do
+                        {
+                            if (scoreT.Count == 0)
+                            {
+
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                double sumTmp = 0.0;
+                                foreach (double scoreElement in scoreT)
+                                {
+                                    sumTmp += scoreElement;
+                                }
+
+                                scoreT.Sort();
+
+                                Console.WriteLine($"У {name} средней оценкой является {sumTmp / scoreT.Count}" + "\n");
+
+                            }
+                        } while (check);
+                        break;
+                    case "S":
+
+                        test.Sort();
+
+                        Console.WriteLine($"У {name} минимальной оценкой является {test[0]}" + "\n");
+
+                        break;
+                    case "V":
 
                         return;
 

@@ -1,69 +1,158 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace HW_17
+namespace Дневник
 {
-    class welcome
+    class Program
     {
         static void Main(string[] args)
         {
-  
-            Console.WriteLine("Program for tracking student progress in C#" + "\n");
+            Console.WriteLine("Введите, пожалуйста, имя ученика");
+            String name = Console.ReadLine();
 
-            Console.WriteLine("Enter student name\r");
-            string name = Console.ReadLine();
+            bool check = false;
+            name = name.Trim();
 
-            Console.WriteLine("Hello " + name + "! Choose an option from the following list\r");
-            
-            Console.WriteLine("\ta - Add");
-            /*Console.WriteLine("\ts - ");
-            Console.WriteLine("\tm - ");
-            Console.WriteLine("\td - ");*/
-            Console.Write("Your option? ");
-
-            string enter = Console.ReadLine();
-            if (enter == "a")
+            if (name.Length == 0)
             {
-                Console.Write("Enter the number of grade to be added:\t");
-                int elementsGrade = int.Parse(Console.ReadLine());
-                int[] ballMath = new int[elementsGrade];
-
-                Console.WriteLine("Enter grade in Math\r");
-
-                for (int i = 0; i < ballMath.Length; i++)
-                {
-                    Console.WriteLine($"Enter the grade under the index number {i}:\r");
-                    ballMath[i] = int.Parse(Console.ReadLine());
-                }
-
+                check = false;
+                Console.WriteLine("Вы ввели не верное имя");
             }
-            
+            else
+            {
+                check = true;
+                Console.WriteLine("Имя ученика дабавлено в базу");
+            }
+
+            List<double> scoreM = new List<double>();
+            List<double> scoreL = new List<double>();
+            List<double> scorePh = new List<double>();
+            List<double> scoreT = new List<double>();
+
+            while (true)
+            {
+                Console.WriteLine("Выберите команду: " + "\n" +
+                "1 - добавить оценку по Математике;" + "\n" + "2 - добавить оценку по Литература;" +
+                "\n" + "3 - добавить оценку по Физика;" + "\n" + "4 - добавить оценку по Физ-ра;" + "\n"
+                 + "11- Программа определяет максимальную оценку по Математике;" + "\n"
+                 + "12- Программа определяет минимальную оценку по Математике;" + "\n"
+                 + "13- Программа определяет среднюю оценку по Математике" + "\n");
+                string selection = Console.ReadLine();
+                switch (selection)
+                {
+                    case "1":
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        scoreM.Add(Convert.ToDouble(Console.ReadLine()));
+                        check = false;
+                        do
+                        {
+                            if (scoreM[0] > 5 || scoreM[0] == 0 || scoreM[0] == 1)
+                            {
+                                check = false;
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Оценка внесена в базу");
+                            }
+                        } while (check);
+
+                        break;
+                    case "2":
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        scoreL.Add(Convert.ToDouble(Console.ReadLine()));
+                        check = false;
+                        do
+                        {
+                            if (scoreL[0] > 5 || scoreL[0] == 0 || scoreL[0] == 1)
+                            {
+                                check = false;
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Оценка внесена в базу");
+                            }
+                        } while (check);
+
+                        break;
+                    case "3":
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        scorePh.Add(Convert.ToDouble(Console.ReadLine()));
+                        check = false;
+                        do
+                        {
+                            if (scorePh[0] > 5 || scorePh[0] == 0 || scorePh[0] == 1)
+                            {
+                                check = false;
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Оценка внесена в базу");
+                            }
+                        } while (check);
+
+                        break;
+                    case "4":
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        scoreT.Add(Convert.ToDouble(Console.ReadLine()));
+                        check = false;
+                        do
+                        {
+                            if (scoreT[0] > 5 || scoreT[0] == 0 || scoreT[0] == 1)
+                            {
+                                check = false;
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Оценка внесена в базу");
+                            }
+                        } while (check);
+
+                        break;
+
+                    case "11":
+
+                        scoreM.Sort();
+
+                        Console.WriteLine($"У {name} максимальной оценкой является {scoreM[scoreM.Count - 1]}" + "\n");
+
+                        break;
+                    case "12":
+
+                        scoreM.Sort();
+
+                        Console.WriteLine($"У {name} минимальной оценкой является {scoreM[0]}" + "\n");
+
+                        break;
+                    case "13":
+
+                        double sumTmp = 0.0;
+                        foreach (double scoreElement in scoreM)
+                        {
+                            sumTmp += scoreElement;
+                        }
+
+                        scoreM.Sort();
+
+                        Console.WriteLine($"У {name} средней оценкой является {sumTmp / scoreM.Count}" + "\n");
+
+                        break;
+
+                    case "=":
+
+                        return;
+
+                    default:
+                        Console.WriteLine("Вы ввели недопустимое значение");
+                        break;
+                }
+            }
         }
     }
-
-    /*class Add
-    {
-        static void Main1(string[] args)
-        {
-
-            switch (Console.ReadLine())
-            {
-                case "a":
-                    Console.WriteLine("Your result: 1" );
-                    break;
-                case "s":
-                    Console.WriteLine("Your result: 2");
-                    break;
-                case "m":
-                    Console.WriteLine("Your result: 3");
-                    break;
-                case "d":
-                    Console.WriteLine("Your result: 4");
-                    break;
-            }
-            Console.Write("Press any key to close the Calculator console app...");
-            Console.ReadKey();
-        }
-    }*/
 }
+/*Console.WriteLine($"У {name} минимальной оценкой является {scoreM[0]}, максимальной оценкой является {scoreM[scoreM.Count - 1]}," +
+    $" средней оценкой является {sumTmp / scoreM.Count}");*/

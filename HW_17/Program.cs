@@ -42,7 +42,7 @@ namespace Дневник
                 switch (selection)
                 {
                     case "1":
-                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неуд; 3 - Покатит; 4 - Не плохо ; 5 - Хорошо;");
                         scoreM.Add(Convert.ToDouble(Console.ReadLine()));
                         check = false;
                         do
@@ -50,7 +50,7 @@ namespace Дневник
                             if (scoreM[0] > 5 || scoreM[0] == 0 || scoreM[0] == 1)
                             {
                                 check = false;
-                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1 до 5 баллов");
                             }
                             else
                             {
@@ -60,7 +60,7 @@ namespace Дневник
 
                         break;
                     case "2":
-                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неуд; 3 - Покатит; 4 - Не плохо ; 5 - Хорошо;");
                         scoreL.Add(Convert.ToDouble(Console.ReadLine()));
                         check = false;
                         do
@@ -68,7 +68,7 @@ namespace Дневник
                             if (scoreL[0] > 5 || scoreL[0] == 0 || scoreL[0] == 1)
                             {
                                 check = false;
-                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1 до 5 баллов");
                             }
                             else
                             {
@@ -78,7 +78,7 @@ namespace Дневник
 
                         break;
                     case "3":
-                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неуд; 3 - Покатит; 4 - Не плохо ; 5 - Хорошо;");
                         scorePh.Add(Convert.ToDouble(Console.ReadLine()));
                         check = false;
                         do
@@ -86,7 +86,7 @@ namespace Дневник
                             if (scorePh[0] > 5 || scorePh[0] == 0 || scorePh[0] == 1)
                             {
                                 check = false;
-                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1 до 5 баллов");
                             }
                             else
                             {
@@ -96,7 +96,7 @@ namespace Дневник
 
                         break;
                     case "4":
-                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неудовлетворительно; 3 - Удовлетворительно; 4 - Хорошо; 5 - Отлично");
+                        Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неуд; 3 - Покатит; 4 - Не плохо ; 5 - Хорошо;");
                         scoreT.Add(Convert.ToDouble(Console.ReadLine()));
                         check = false;
                         do
@@ -104,7 +104,7 @@ namespace Дневник
                             if (scoreT[0] > 5 || scoreT[0] == 0 || scoreT[0] == 1)
                             {
                                 check = false;
-                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1  до 5 баллов");
+                                Console.WriteLine("Ошибка, попробуйте еще раз ввести оценку от 1 до 5 баллов");
                             }
                             else
                             {
@@ -115,30 +115,68 @@ namespace Дневник
                         break;
 
                     case "11":
+                        do
+                        {
+                            if (scoreM.Count == 0)
+                            {
 
-                        scoreM.Sort();
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                    scoreM.Sort();
 
-                        Console.WriteLine($"У {name} максимальной оценкой является {scoreM[scoreM.Count - 1]}" + "\n");
+                                    Console.WriteLine($"У {name} максимальной оценкой является {scoreM[scoreM.Count - 1]}" + "\n");
+
+                            }
+                        } while (check);
+                        
 
                         break;
                     case "12":
+                        do
+                        {
+                            if (scoreM.Count == 0)
+                            {
 
-                        scoreM.Sort();
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                    scoreM.Sort();
 
-                        Console.WriteLine($"У {name} минимальной оценкой является {scoreM[0]}" + "\n");
+                                Console.WriteLine($"У {name} минимальной оценкой является {scoreM[0]}" + "\n");
 
+                            }
+                        } while (check);
+  
                         break;
                     case "13":
-
-                        double sumTmp = 0.0;
-                        foreach (double scoreElement in scoreM)
+                        do
                         {
-                            sumTmp += scoreElement;
-                        }
+                            if (scoreM.Count == 0)
+                            {
 
-                        scoreM.Sort();
+                                check = false;
+                                Console.WriteLine("Оценка не была добавлена");
+                            }
+                            else
+                            {
+                                double sumTmp = 0.0;
+                                foreach (double scoreElement in scoreM)
+                                {
+                                    sumTmp += scoreElement;
+                                }
 
-                        Console.WriteLine($"У {name} средней оценкой является {sumTmp / scoreM.Count}" + "\n");
+                                scoreM.Sort();
+
+                                Console.WriteLine($"У {name} средней оценкой является {sumTmp / scoreM.Count}" + "\n");
+
+                            }
+                        } while (check);
+                        
 
                         break;
 

@@ -30,7 +30,7 @@ namespace Дневник
             List<double> scoreL = new List<double>();
             List<double> scorePh = new List<double>();
             List<double> scoreT = new List<double>();
-            List<double> test = scoreM.Concat(scoreL).Concat(scorePh).Concat(scoreT).ToList();
+            List<double> test = new List<double>();
             while (true)
             {
                 Console.WriteLine("Выберите команду: " + "\n" +
@@ -48,6 +48,7 @@ namespace Дневник
                  + "41- Программа определяет максимальную оценку по Физ-ре;" + "\n"
                  + "42- Программа определяет минимальную оценку по Физ-ре;" + "\n"
                  + "43- Программа определяет среднюю оценку по Физ-ре;" + "\n"
+                 + "S- Программа определяет среднюю/максимальную/минимальную оценку по всем предметам(общая статистика);" + "\n"
                  + "V - выход");
                 string selection = Console.ReadLine();
                 switch (selection)
@@ -55,6 +56,7 @@ namespace Дневник
                     case "1":
                         Console.WriteLine("Введите, пожалуйста, оценку: 2 - Неуд; 3 - Покатит; 4 - Не плохо ; 5 - Хорошо;");
                         scoreM.Add(Convert.ToDouble(Console.ReadLine()));
+                        
                         check = false;
                         do
                         {
@@ -386,10 +388,40 @@ namespace Дневник
                         break;
                     case "S":
 
-                        test.Sort();
+                        
+                        do
+                        {
 
-                        Console.WriteLine($"У {name} минимальной оценкой является {test[0]}" + "\n");
+                            foreach (double scoreElement in scoreM)
+                            {
+                                    test.Add(scoreElement);
+                            }
+                            foreach (double scoreElement in scoreL)
+                            {
+                                test.Add(scoreElement);
+                            }
+                            foreach (double scoreElement in scorePh)
+                            {
+                                test.Add(scoreElement);
+                            }
+                            foreach (double scoreElement in scoreT)
+                            {
+                                test.Add(scoreElement);
+                            }
 
+                            double sumTmp = 0.0;
+                            foreach (double scoreElement in test)
+                            {
+                                sumTmp += scoreElement;
+                            }
+
+                            test.Sort();
+
+                            Console.WriteLine($"У {name} средней оценкой является {sumTmp / test.Count}" + "\n");
+                            Console.WriteLine($"У {name} максимальной оценкой является {test[test.Count - 1]}" + "\n");
+                            Console.WriteLine($"У {name} минимальной оценкой является {test[0]}" + "\n");
+
+                        } while (check);
                         break;
                     case "V":
 

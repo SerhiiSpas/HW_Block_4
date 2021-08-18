@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Дневник
 {
@@ -9,22 +10,43 @@ namespace Дневник
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите, пожалуйста, имя ученика");
+            s2:
+            Console.WriteLine("Введите, пожалуйста, имя ученика кириллицей");
+            
             String name = Console.ReadLine();
-
             bool check = false;
-            name = name.Trim();
-
-            if (name.Length == 0)
+            Regex regex = new Regex(@"^[А-Яа-яЁё]+$");
+            MatchCollection matches = regex.Matches(name);
+            if (matches.Count > 0)
             {
-                check = false;
-                Console.WriteLine("Вы ввели не верное имя");
+                foreach (Match match in matches)
+                    check = true;
+                Console.WriteLine("Имя ученика дабавлено в базу");
+                
             }
             else
             {
-                check = true;
-                Console.WriteLine("Имя ученика дабавлено в базу");
+                check = false;
+                Console.WriteLine("Вы ввели не верное имя");
+                goto s2;
             }
+
+            
+            name = name.Trim();
+
+            /*if (name.Length == 0 || !name.Any(Char.IsLetter))
+            {
+                
+                check = false;
+                Console.WriteLine("Вы ввели не верное имя");
+                goto s2;
+            }
+
+            
+            else
+            {
+                
+            }*/
 
             List<double> scoreM = new List<double>();
             List<double> scoreL = new List<double>();
